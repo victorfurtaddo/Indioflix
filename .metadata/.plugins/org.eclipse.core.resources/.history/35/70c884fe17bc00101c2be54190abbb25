@@ -1,0 +1,107 @@
+package com.Indioflix.Controller;
+
+import org.Indioflix.Filme;
+import org.Indioflix.Services.FilmeService;
+//Imports do Swagger (OpenAPI)
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+//Imports do Spring
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController // <-- A anotação mais importante que o Swagger procura
+@RequestMapping("/api/filmes") 
+@Tag(name = "Catálogo de Filmes", description = "Endpoints para gerenciar o catálogo")
+public class FilmeController {
+
+ @Autowired
+ private FilmeService filmeService; // O Controller usa o Service
+
+ // --- 1. POST (Criar) ---
+ @Operation(summary = "Adiciona um novo filme ao catálogo")
+ @ApiResponses(value = {
+     @ApiResponse(responseCode = "201", description = "Filme criado com sucesso",
+                  content = @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = Filme.class)))
+ })
+ @PostMapping
+ public ResponseEntity<Filme> criarFilme(@RequestBody Filme filme) {
+     Filme filmeSalvo = filmeService.salvarFilme(filme);
+     return new ResponseEntity<>(filmeSalvo, HttpStatus.CREATED);
+ }
+
+ // --- 2. GET (Listar Todos) ---
+ @Operation(summary = "Lista todos os filmes do catálogo")
+ @GetMapping
+ public ResponseEntity<List<Filme>> listarTodosFilmes() {
+     List<Filme> filmes = filmeService.listarTodos();
+     return ResponseEntity.ok(filmes);
+ }
+
+ // --- 3. GET (Buscar por ID) ---
+ @Operation(summary = "Busca um filme específico pelo ID")
+ @ApiResponses(value = {
+     @ApiResponse(responseCode = "200", description = "Filme encontrado",
+                  content = @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = Filme.class))),
+     @ApiResponse(responseCode = "404", description = "Filme não encontrado")
+ })
+ @GetMapping("/{id}")
+ public ResponseEntity<Filme> buscarFilmePorId(
+     @Parameter(description = "ID do filme a ser buscado", required = true)
+     @PathVariable Long id) {
+     
+     Optional<Filme> filme = filmeService.buscarPorId(id);
+     return filme.map(ResponseEntity::ok)
+                 .orElse(ResponseEntity.notFound().build());
+ }
+
+ // --- 4. PUT (Atualizar por ID) ---
+ @Operation(summary = "Atualiza um filme existente")
+ @ApiResponses(value = {
+     @ApiResponse(responseCode = "200", description = "Filme atualizado com sucesso",
+                  content = @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = Filme.class))),
+     @ApiResponse(responseCode = "404", description = "Filme não encontrado")
+ })
+ @PutMapping("/{id}")
+ public ResponseEntity<Filme> atualizarFilme(
+     @Parameter(description = "ID do filme a ser atualizado", required = true)
+     @PathVariable Long id,
+     @RequestBody Filme filmeDetalhes) {
+     
+     Optional<Filme> filmeAtualizado = filmeService.atualizarFilme(id, filmeDetalhes);
+     return filmeAtualizado.map(ResponseEntity::ok)
+                           .orElse(ResponseEntity.notFound().build());
+ }
+
+ // --- 5. DELETE (Deletar por ID) ---
+ @Operation(summary = "Remove um filme do catálogo")
+ @ApiResponses(value = {
+     @ApiResponse(responseCode = "204", description = "Filme deletado com sucesso (Sem conteúdo)"),
+     @ApiResponse(responseCode = "404", description = "Filme não encontrado")
+ })
+ @DeleteMapping("/{id}")
+ public ResponseEntity<Void> deletarFilme(
+     @Parameter(description = "ID do filme a ser deletado", required = true)
+     @PathVariable Long id) {
+     
+     boolean deletado = filmeService.deletarFilme(id);
+     if (deletado) {
+         return ResponseEntity.noContent().build(); 
+     } else {
+         return ResponseEntity.notFound().build();
+     }
+ }
+}

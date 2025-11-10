@@ -1,0 +1,27 @@
+spring.application.name=indioflix
+spring.h2.console.enabled=true
+
+# --- Configuração do H2 ---
+
+# 1. Força o Spring Boot a usar este nome fixo para o banco em memória
+spring.datasource.url=jdbc:h2:mem:testdb
+
+# 2. Informa qual é o "driver" (programa) para falar com o H2
+spring.datasource.driverClassName=org.h2.Driver
+
+# 3. Define o usuário e senha padrão (sa = system admin, senha em branco)
+spring.datasource.username=sa
+spring.datasource.password=
+
+# 4. Garante que o console web do H2 esteja habilitado
+spring.h2.console.enabled=true
+
+# (Opcional, mas útil) Permite que o Spring Data JPA crie as tabelas (como FILMES)
+spring.jpa.hibernate.ddl-auto=update
+
+spring.security.filter.dispatcher-types=REQUEST, ASYNC, ERROR
+spring.security.web.ignoring=antMatchers("/h2-console/**")
+
+# O H2 Console usa "frames" HTML, que são bloqueados por padrão.
+# Isso permite que eles funcionem.
+spring.headers.frame-options.enabled=false
