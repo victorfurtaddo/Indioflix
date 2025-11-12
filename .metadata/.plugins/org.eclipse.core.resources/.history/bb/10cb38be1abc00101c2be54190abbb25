@@ -1,0 +1,23 @@
+spring.application.name=indioflix
+# --- DataSource ---
+# Força o Spring a usar este nome de banco em memória
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# --- H2 Console ---
+# Habilita o console web
+spring.h2.console.enabled=true
+# Define o caminho para o console (o mesmo que você acessa)
+spring.h2.console.path=/h2-console
+
+# --- JPA ---
+# Diz ao Hibernate para criar/atualizar suas tabelas (ex: FILMES)
+spring.jpa.hibernate.ddl-auto=update
+# Diz ao Hibernate que estamos usando o "dialeto" H2
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# --- Segurança (Caso Spring Security esteja presente) ---
+# Permite que o H2 Console funcione em 'frames'
+spring.headers.frame-options.enabled=false
