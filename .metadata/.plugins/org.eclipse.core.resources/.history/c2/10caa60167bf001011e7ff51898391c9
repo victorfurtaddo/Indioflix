@@ -1,0 +1,14 @@
+spring.application.name=indioflix
+
+# --- Configuração do PostgreSQL ---
+spring.datasource.url=jdbc:postgresql://localhost:5432/indioflix_db
+spring.datasource.username=seu_usuario_postgres
+spring.datasource.password=sua_senha_postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# --- JPA/Hibernate ---
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# --- Para ver o SQL gerado (opcional) ---
+spring.jpa.show-sql=true

@@ -32,7 +32,7 @@ public class Filme {
 	private String diretor;
 	
 	@Column(name = "nota_pessoal")
-	private Integer notaPessoal;
+	private Double notaPessoal;
 	
 	@Column(name = "review_curta", length = 2000)
 	private String reviewCurta;
