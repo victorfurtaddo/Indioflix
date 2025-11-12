@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'lexend';
+    src: url('./assets/fonts/Lexend-VariableFont_wght.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #0A0D10;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}

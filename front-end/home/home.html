@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/indioflix.ico" type="image/x-icon">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../global.css">
+    <title>Indioflix | Home</title>
+</head>
+<body>
+    <main>
+        <nav>
+            <img src="../assets/logoNav.svg" class="logo" alt="">
+            <div class="navigation">
+                <div class="selected">
+                    <img src="../assets/icons/movieFill.svg" alt="">
+                    <span>Catálogo</span>
+                </div>
+                <div class="divider"></div>
+                <a href="newMovie.html" class="fakeImg"></a> 
+                <div class="dot"></div>
+            </div>
+            <div class="options">
+                <div class="fakeImg"></div>
+                <div class="divider"></div>
+                <a href="../index.html" class="fakeImg"></a>
+            </div>
+        </nav>
+
+        <div class="catalog">
+            <span class="title">Seus Filmes</span>
+            <div class="movieGrid" id="movieGrid"> 
+
+                </div>
+        </div>
+        <div id="movieDetailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        
+        <div id="modalBody">
+            <div class="details-header">
+                <img id="modalCapa" src="" alt="Capa do Filme">
+                <h2 id="modalTitulo"></h2>
+            </div>
+            <div class="details-info">
+                <p><strong>Ano de Lançamento:</strong> <span id="modalAno"></span></p>
+                <p><strong>Diretor:</strong> <span id="modalDiretor"></span></p>
+                <p><strong>Sua Nota:</strong> <span id="modalNota"></span></p>
+                <div class="details-review">
+                    <h3>Sua Review:</h3>
+                    <p id="modalReview"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .modal {
+        display: none; /* Escondido por padrão */
+        position: fixed; 
+        z-index: 100; /* Fica acima de tudo */
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.8); /* Fundo semi-transparente */
+        backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+        background-color: #0D1117;
+        margin: 5% auto; /* 5% do topo e centralizado */
+        padding: 40px;
+        border: 1px solid #3D444D;
+        border-radius: 24px;
+        width: 80%; /* Largura padrão */
+        max-width: 900px;
+        color: #f2f2f2;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .details-header {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    #modalCapa {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .details-info p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .details-review {
+        margin-top: 20px;
+        border-top: 1px solid #3D444D;
+        padding-top: 15px;
+    }
+</style>
+    </main>
+    <script src="catalogo.js"></script>
+</body>
+</html>
