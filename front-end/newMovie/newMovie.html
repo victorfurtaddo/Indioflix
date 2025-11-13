@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/indioflix.ico" type="image/x-icon">
+    <link rel="stylesheet" href="newMovie.css">
+    <link rel="stylesheet" href="../global.css">
+    <title id="pageTitle">Indioflix | Adicionar Filme</title>
+
+</head>
+<body>
+    <main>
+        <nav>
+            <img src="../assets/logoNav.svg" class="logo" alt="">
+            <div class="navigation">
+                <a href="../home/home.html" class="fakeImg"></a>
+                <div class="divider"></div>
+                <div id="tab-selected" class="selected">
+                    <img src="../assets/icons/newMovieFill.svg" alt="">
+                    <span id="tab">Novo filme</span>
+                </div>
+                <div class="dot"></div>
+            </div>
+            <div class="options">
+                <div class="fakeImg"></div>
+                <div class="divider"></div>
+                <a href="../index.html" class="fakeImg"></a>
+            </div>
+        </nav>
+        
+        <div class="form-container-wrapper">
+            <div class="formContainer">
+                <span class="title" id="formTitle">Cadastrar Filme</span>
+                <form autocomplete="off" id="filmeForm">
+                    <div class="formInputsWrapper">
+
+                        <!-- TITULO -->
+                        <div class="formInputWrapper">
+                            <div class="formInput">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/title.svg" alt="">
+                                </div>
+                                <input type="text" id="titulo" placeholder="Título" maxlength="200" required>
+                            </div>
+                            <div class="inputRow"></div>
+                        </div>
+
+                        <!-- DIRETOR -->
+                        <div class="formInputWrapper">
+                            <div class="formInput">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/director.svg" alt="">
+                                </div>
+                                <input type="text" id="diretor" placeholder="Diretor" maxlength="100">
+                            </div>
+                            <div class="inputRow"></div>
+                        </div>
+
+                        <!-- LANÇAMENTO -->
+                        <div class="formInputWrapper">
+                            <div class="formInput">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/calendarFill.svg" alt="">
+                                </div>
+                                <input type="number" id="anoLancamento" placeholder="Ano de Lançamento" min="1800" max="2100">
+                            </div>
+                            <div class="inputRow"></div>
+                        </div>
+
+                        <!-- AVALIACAO -->
+
+                        <div class="formInputWrapper ratingInput">
+                            <div class="formInput rating">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/ownRating.svg" alt="">
+                                </div>
+                                <span>Nota Pessoal</span>
+                            </div>
+
+                            <div class="ratingWrapper">
+                                <input id="notaPessoal" type="range" min="0" max="10" step="1" value="0">
+                                <div class="stars">
+                                    <span>★</span><span>★</span><span>★</span>
+                                    <span>★</span><span>★</span><span>★</span>
+                                    <span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                                <span id="ratingValue">0</span>
+                            </div>
+
+                            <div class="inputRow"></div>
+                        </div>
+
+                        <!-- REVIEW -->
+                        <div class="formInputWrapper">
+                            <div class="formInput">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/review.svg" alt="">
+                                </div>
+                                <textarea id="reviewCurta" resize="" placeholder="Review de até 2000 caracteres" maxlength="2000"></textarea>
+                            </div>
+                            <div class="inputRow"></div>
+                        </div>
+
+                        <!-- CAPA -->
+                        <div class="formInputWrapper">
+                            <div class="formInput">
+                                <div class="imgWrapper">
+                                    <img src="../assets/icons/imgUrlFill.svg" alt="">
+                                </div>
+                                <input type="url" id="urlCapa" placeholder="URL da Capa" maxlength="1024">
+                            </div>
+                            <div class="inputRow"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">Cadastrar Filme</button>
+                    
+                </form>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="card movie-card">
+                <div class="banner fakeImg" style="background-image: url('../assets/icons/imgUrl.svg');">
+                    <div class="features">
+                        <img src="../assets/icons/ownRating.svg" alt="">
+                        <span id="nota">0</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="title">
+                        <span>Título</span>
+                        <div class="dot"></div>
+                        <div class="year">
+                            <img src="../assets/icons/calendar.svg" alt="">
+                            <span>Ano</span>
+                        </div>
+                    </div>
+                    <div class="director">
+                        <img src="../assets/icons/director.svg" alt="">
+                        <span>Diretor</span>
+                        <div class="dot"></div>
+                        <span>Nome</span>
+                    </div>
+                    <div class="ownReview">
+                        <div class="top">
+                            <img src="../assets/icons/review.svg" alt="">
+                            <span>Sua Review</span>
+                        </div>
+                        <span class="review">...</span>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </main>
+
+    <script src="newMovie.js"></script>
+    <script src="moviePreview.js"></script>
+</body>
+</html>
+
+<!-- <form id="filmeForm">
+                    
+                    <div class="form-field">
+                        <label for="titulo" class="required">Título</label>
+                        <input type="text" id="titulo" placeholder="Título do filme ou série" maxlength="200" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="diretor">Diretor</label>
+                        <input type="text" id="diretor" placeholder="Nome do diretor" maxlength="100">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="anoLancamento">Ano de Lançamento</label>
+                        <input type="number" id="anoLancamento" placeholder="Ex: 2024" min="1800" max="2100">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="notaPessoal">Sua Nota (0.0 a 10.0)</label>
+                        <input type="number" id="notaPessoal" step="0.5" min="0" max="10" placeholder="Ex: 8.5">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="reviewCurta">Review Curta</label>
+                        <textarea id="reviewCurta" placeholder="Escreva uma breve resenha pessoal (máx. 2000 caracteres)" maxlength="2000"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="urlCapa">URL da Capa</label>
+                        <input type="url" id="urlCapa" placeholder="Link direto para a imagem da capa" maxlength="1024">
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        CADASTRAR FILME
+                    </button>
+                </form> -->

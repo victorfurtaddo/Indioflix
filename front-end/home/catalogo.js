@@ -12,7 +12,7 @@ function criarCardFilme(filme) {
     const review = filme.reviewCurta || 'Sem review curta.';
     const diretor = filme.diretor || 'Não informado';
     const anoLancamento = filme.anoLancamento || '????';
-    const urlCapa = filme.urlCapa || '';
+    const urlCapa = filme.urlCapa || '../assets/icons/imgUrl.svg';
 
     // Adicionado classe 'movie-card'
     return `
@@ -58,7 +58,7 @@ function criarCardFilme(filme) {
 // 2. Função para injetar os Cards no HTML e adicionar Event Listeners
 function renderizarFilmes(filmes) {
     if (filmes.length === 0) {
-        movieGrid.innerHTML = '<p style="margin-left: 8px;">Seu catálogo está vazio. Use o botão "+" no topo para adicionar um filme!</p>';
+        movieGrid.innerHTML = ' <div class="empty"><span>Nenhum filme cadastrado</span><img src="../assets/cassette.svg" alt=""></div>';
         return;
     }
 
@@ -80,7 +80,7 @@ function renderizarFilmes(filmes) {
         button.addEventListener('click', (event) => {
             event.stopPropagation();
             const filmeId = event.currentTarget.getAttribute('data-id');
-            window.location.href = `./newMovie.html?id=${filmeId}`; 
+            window.location.href = `../newMovie/newMovie.html?id=${filmeId}`; 
         });
     });
     
@@ -99,7 +99,7 @@ function preencherModal(filme) {
     
     const nota = filme.notaPessoal !== null ? filme.notaPessoal.toFixed(1) : 'N/A';
     
-    document.getElementById('modalCapa').src = filme.urlCapa || '../assets/placeholder.jpg';
+    document.getElementById('modalCapa').src = filme.urlCapa || '../assets/icons/imgUrl.svg';
     document.getElementById('modalTitulo').textContent = filme.titulo;
     document.getElementById('modalAno').textContent = filme.anoLancamento || 'Não Informado';
     document.getElementById('modalDiretor').textContent = filme.diretor || 'Não Informado';
