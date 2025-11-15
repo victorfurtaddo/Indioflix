@@ -225,23 +225,31 @@ nav{
             padding: 12px 12px 24px 12px;
 
             aspect-ratio: 2 / 1;
-            width: calc((100% - 110px) / 4);
 
-            @media (min-width: 1366px) {
-                width: calc((100% - 110px) / 4);
+            transition: 200ms ease-in-out;
+
+            border: 1px solid transparent; 
+            cursor: pointer;
+
+
+            width: calc((100% - 48px) / 3);
+
+            @media (min-width: 1115px) {
+                width: calc((100% - 72px) / 4);
+            }
+
+            @media (min-width: 1440px) {
+                width: calc((100% - 96px) / 5);
             }
 
             @media (min-width: 1600px) {
-                width: calc((100% - 126px) / 5);
+                width: calc((100% - 120px) / 6);
             }
 
             @media (min-width: 1920px) {
-                width: calc((100% - 160px) / 6);
+                width: calc((100% - 144px) / 7);
             }
 
-            @media (max-width: 720px) {
-                width: calc((100% - 400px) / 4);
-            }
 
 
             .banner{
@@ -466,10 +474,14 @@ nav{
 
             
         }
+
+        .card:hover{
+           border: 1px solid #3D444D; 
+        }
     }
 
     .movieGrid::-webkit-scrollbar {
-        width: 8px;
+        width: 24px;
     }
 
     .movieGrid::-webkit-scrollbar-track {
@@ -477,8 +489,9 @@ nav{
     }
 
     .movieGrid::-webkit-scrollbar-thumb {
+        border: 9px solid #0D1117;
         background-color: #7F8184;
-        border-radius: 10px;                       
+        border-radius: 12px;                       
     }
 }
 
