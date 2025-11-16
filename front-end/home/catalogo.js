@@ -58,7 +58,7 @@ function criarCardFilme(filme) {
 // 2. Função para injetar os Cards no HTML e adicionar Event Listeners
 function renderizarFilmes(filmes) {
     if (filmes.length === 0) {
-        movieGrid.innerHTML = ' <div class="empty"><span>Nenhum filme cadastrado</span><img src="../assets/cassette.svg" alt=""></div>';
+        movieGrid.innerHTML = '<div class="empty"><span>Nenhum filme cadastrado</span><img src="../assets/cassette.svg" alt=""><a href="../newMovie/newMovie.html">Adicione um Filme</a></div>';
         return;
     }
 
