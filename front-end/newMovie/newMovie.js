@@ -93,7 +93,7 @@ capaInput?.addEventListener('input', () => {
 
 // =================== v API v =======================
 
-const API_URL = 'http://localhost:8080/api/filmes';
+const API_URL = 'https://indioflix-1.onrender.com/api/filmes';
 const filmeForm = document.getElementById('filmeForm');
 const pageTitle = document.getElementById('pageTitle')
 const tab = document.getElementById('tab')

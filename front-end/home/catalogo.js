@@ -1,6 +1,6 @@
 // catalog.js (VERSÃO FINAL CORRIGIDA)
 
-const API_URL = 'http://localhost:8080/api/filmes';
+const API_URL = 'https://indioflix-1.onrender.com/api/filmes';
 const movieGrid = document.getElementById('movieGrid');
 
 
